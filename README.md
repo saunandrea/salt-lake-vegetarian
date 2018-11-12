@@ -1,9 +1,9 @@
 ## Vegetarian Resaurants in SLC
 Application to showcase building a react app from the groundup and while utilizing public APIs.
 
-##How to run
+## How to run
 1) Download ZIP of github, upzip
-2) From the %whereUnzipped%/salt-lake-vegetarian run 'npm install' and 'npm start'
+2) From the terminal in %whereUnzipped%/salt-lake-vegetarian/ run 'npm install' and 'npm start'
 3) The site should now be available @ [http://localhost:3000](http://localhost:3000)
 
 ______________________________________________

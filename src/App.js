@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import MainMap from './MainMap'
+import SidePane from './SidePane'
 import './App.css';
-
-
-
 
 class App extends Component {
 
   render() {
     return (
-      <MainMap></MainMap>
+      <div class="mainFrame">
+        <SidePane></SidePane>
+        <MainMap></MainMap>
+      </div>
     );
   }
 }
