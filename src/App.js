@@ -3,6 +3,7 @@ import MainMap from './MainMap'
 import SidePane from './SidePane'
 import './App.css';
 import locations from "./locations"
+import * as SearchAPI from './SearchAPI'
 
 class App extends Component {
   state = {
@@ -24,7 +25,7 @@ class App extends Component {
 
   render() {
 
-
+    console.log("tips", SearchAPI.getTips((this.state.locationsAll[0].fsId)));
     return (
       <div className="mainFrame">
         <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter}></SidePane>

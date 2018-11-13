@@ -4,41 +4,47 @@
         "pos": {
             "lat": 40.763803,
             "lng": -111.889457
-        }
+        },
+        "fsId": "59b74cfeee71203bd8a96939"
     },
     {
         "name": "All Chay",
         "pos": {
             "lat": 40.7804459,
             "lng": -111.9297522
-        }
+        },
+        "fsId": "550dc9e6498e6f26c61aadd6"
     },
     {
         "name": "Season's Plant Based Bistro",
         "pos": {
             "lat": 40.740059,
             "lng": -111.890814
-        }
+        },
+        "fsId": "597b04a70d8a0f47dd93e619"
     },
     {
         "name": "Vertical Diner",
         "pos": {
             "lat": 40.7499919,
             "lng": -111.9000643
-        }
+        },
+        "fsId": "530e9183498e4a227109881c"
     },
     {
         "name": "Zest",
         "pos": {
             "lat": 40.763272,
             "lng": -111.89864
-        }
+        },
+        "fsId": "5063bc89e4b0f8bfa6c9d79d"
     },
     {
-        "name": "Bud's",
+        "name": "Buds",
         "pos": {
             "lat": 40.763008,
             "lng": -111.8785537
-        }
+        },
+        "fsId": "50746e7fe4b0cfa634834f26"
     }
 ]

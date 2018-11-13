@@ -1,11 +1,25 @@
 
-const api = "http://maps.googleapis.com/maps/api/"
 
 
 // Generate a unique token for storing your bookshelf data on the backend server.
 export const googleMapsAPIKey = "AIzaSyC_FpCwCWMQhy9MbxsVtGdTXTUxvpmgC_c";
+const fsClientId = "SQ4LMCKWOTEWZAF4V3KJUJ2NMEIPLWI3YURWQ0YDL3WGFPOW";
+const fsClientSecret = "KYCJRFDIDN4HYPGKF2VFC1OZNO40SVR4HUJYL1IXNU3HYZZM";
+
+export const getHours = () =>
+    fetch(`https://api.foursquare.com/v2/venues/explore?client_id=${fsClientId}&client_secret=${fsClientSecret}&v=20180323&limit=1&ll=40.7243,-74.0018&query=coffee`)
+        .then(res => res.json())
+        .catch(function () {
+            console.log("hmmmmmm");
+        });
 
 
+export const getTips = (id) =>
+    fetch(`https://api.foursquare.com/v2/venues/${id}/?client_id=${fsClientId}&client_secret=${fsClientSecret}&v=20180323&tips&sort=recent&?limit=3`)
+        .then(res => res.json())
+        .catch(function () {
+            console.log("hmmmmmm");
+        });
 
 // const headers = {
 //     'Accept': 'application/json',
