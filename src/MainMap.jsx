@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import * as SearchAPI from './SearchAPI'
+import MapMarker from './MapMarker'
 
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class MainMap extends Component {
 
@@ -27,10 +27,10 @@ class MainMap extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}>
                     {this.props.locations.map((loc, i) => (
-                        <AnyReactComponent key={i}
+                        <MapMarker key={i}
                             lat={loc.pos.lat}
                             lng={loc.pos.lng}
-                            text={loc.name}
+                            loc={loc}
                         />
                     ))}
                 </GoogleMapReact>
@@ -40,3 +40,9 @@ class MainMap extends Component {
 }
 
 export default MainMap;
+
+// <AnyReactComponent key={i}
+// lat={loc.pos.lat}
+// lng={loc.pos.lng}
+// text={loc.name}
+// />

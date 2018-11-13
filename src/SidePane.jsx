@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as SearchAPI from './SearchAPI';
 
 class SidePane extends Component {
     state = {
@@ -18,16 +19,20 @@ class SidePane extends Component {
         });
     }
 
+    handleClick = (loc) => {
+        console.log("checking click", SearchAPI.getTips(loc.fsId));
+    }
+
     render() {
         return (
 
-            <div>
+            <div className="sidePane">
                 <h1>Vegetarian Eats in SLC</h1>
                 <input type="text" placeholder="Filter Options" value={this.state.searchTerm} onChange={this.handleChange}></input>
-                <ul>
+                <ul className="options">
                     {this.props.locations ?
                         this.props.locations.map((loc, i) => (
-                            <li key={i}>{loc.name}</li>
+                            <li key={i}><button onClick={() => this.handleClick(loc)}>{loc.name}</button></li>
                         )) : <div>
                             loading...
                     </div>}
