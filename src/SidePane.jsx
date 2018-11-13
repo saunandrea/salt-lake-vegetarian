@@ -1,18 +1,36 @@
 import React, { Component } from 'react';
 
 class SidePane extends Component {
+    state = {
+        searchTerm: ''
+    };
+
+    handleChange = (event) => {
+        this.setState({ searchTerm: event.target.value }, () => {
+            if (this.iSearch) {
+                clearTimeout(this.iSearch);
+                this.iSearch = null;
+            }
+
+            this.iSearch = setTimeout(() => {
+                this.props.onUpdate(this.state.searchTerm);
+            }, 200);
+        });
+    }
+
     render() {
         return (
 
             <div>
-                <h1>Helping you find the best vegetarian in SLC</h1>
-                <input placeholder="Filter Options"></input>
+                <h1>Vegetarian Eats in SLC</h1>
+                <input type="text" placeholder="Filter Options" value={this.state.searchTerm} onChange={this.handleChange}></input>
                 <ul>
-                    <li>Boltcutter</li>
-                    <li>Zest</li>
-                    <li>Bud's</li>
-                    <li>All Chay</li>
-                    <li>Season's Plant Based Bistro</li>
+                    {this.props.locations ?
+                        this.props.locations.map((loc, i) => (
+                            <li key={i}>{loc.name}</li>
+                        )) : <div>
+                            loading...
+                    </div>}
                 </ul>
             </div>
         );
