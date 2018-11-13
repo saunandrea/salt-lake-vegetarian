@@ -7,7 +7,7 @@ class App extends Component {
 
   render() {
     return (
-      <div class="mainFrame">
+      <div className="mainFrame">
         <SidePane></SidePane>
         <MainMap></MainMap>
       </div>
