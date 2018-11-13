@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Boltcutter",
+        "pos": {
+            "lat": 40.763803,
+            "lng": -111.889457
+        }
+    },
+    {
+        "name": "All Chay",
+        "pos": {
+            "lat": 40.7804459,
+            "lng": -111.9297522
+        }
+    },
+    {
+        "name": "Season's Plant Based Bistro",
+        "pos": {
+            "lat": 40.740059,
+            "lng": -111.890814
+        }
+    },
+    {
+        "name": "Vertical Diner",
+        "pos": {
+            "lat": 40.7499919,
+            "lng": -111.9000643
+        }
+    },
+    {
+        "name": "Zest",
+        "pos": {
+            "lat": 40.763272,
+            "lng": -111.89864
+        }
+    },
+    {
+        "name": "Bud's",
+        "pos": {
+            "lat": 40.763008,
+            "lng": -111.8785537
+        }
+    }
+]

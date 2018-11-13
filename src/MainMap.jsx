@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import * as SearchAPI from './SearchAPI'
+import locations from "./locations"
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 // let myMap;
@@ -16,26 +17,6 @@ class MainMap extends Component {
         zoom: 13
     };
 
-    state = { boltcutterLat: 0, boltcutterLng: 0 }
-
-
-    testFetch() {
-        let geocoder = new window.google.maps.Geocoder();
-        geocoder.geocode({ 'address': '57 E Gallivan Ave, Salt Lake City, UT 84111' }, (results, status) => {
-            if (status === 'OK') {
-                // resultsGeo = results;
-                console.log(results);
-                this.setState({
-                    boltcutterLat: results[0].geometry.location.lat(),
-                    boltcutterLng: results[0].geometry.location.lng()
-                });
-
-            } else {
-                console.log('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    }
-
     render() {
         let key = SearchAPI.googleMapsAPIKey;
         return (
@@ -44,21 +25,14 @@ class MainMap extends Component {
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: key }}
                     defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
-                    geometryLibrary={true}
-                    onGoogleApiLoaded={({ map, maps }) => {
-                        // myMap = map;
-                        // googleMapsApi = maps;
-                        // console.log(googleMapsApi);
-                        console.log(this.testFetch());
-                    }}
-                // yesIWantToUseGoogleMapApiInternals
-                >
-                    <AnyReactComponent
-                        lat={this.state.boltcutterLat}
-                        lng={this.state.boltcutterLng}
-                        text={'X'}
-                    />
+                    defaultZoom={this.props.zoom}>
+                    {locations.map((loc, i) => (
+                        <AnyReactComponent key={i}
+                            lat={loc.pos.lat}
+                            lng={loc.pos.lng}
+                            text={loc.name}
+                        />
+                    ))}
                 </GoogleMapReact>
             </div>
         );
