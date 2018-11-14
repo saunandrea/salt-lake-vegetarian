@@ -16,6 +16,12 @@ class MainMap extends Component {
         locations: []
     };
 
+    _onChildClick = (key, childProps) => {
+        //  warning/ todo: ONLY WORKS WHEN CLICKING THE LEFT EDGE OF THE CABBAGE
+        this.props.selectLocation(childProps.loc);
+
+    }
+
     render() {
         let key = SearchAPI.googleMapsAPIKey;
         console.log(this.props.locationsAll);
@@ -24,13 +30,15 @@ class MainMap extends Component {
             <div style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: key }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}>
-                    {this.props.locations.map((loc, i) => (
-                        <MapMarker key={i}
+                    center={this.props.center}
+                    defaultZoom={this.props.zoom}
+                    onChildClick={this._onChildClick}>
+                    {this.props.locations.map((loc) => (
+                        <MapMarker key={loc.vegId}
                             lat={loc.pos.lat}
                             lng={loc.pos.lng}
                             loc={loc}
+                            onClick={this.props.selectLocation.bind(this, loc)}
                         />
                     ))}
                 </GoogleMapReact>

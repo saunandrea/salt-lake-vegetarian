@@ -38,8 +38,8 @@ class App extends Component {
     this.setState({
       locationsFiltered: updatedList,
       mapCenter: {
-        lat: selected.lat,
-        lng: selected.lng
+        lat: selected.pos.lat,
+        lng: selected.pos.lng
       }
     })
   }
@@ -48,7 +48,7 @@ class App extends Component {
     return (
       <div className="mainFrame">
         <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter} selectLocation={this.selectLocation}></SidePane>
-        <MainMap center={this.state.mapCenter} zoom={this.state.zoom} locations={this.state.locationsFiltered}></MainMap>
+        <MainMap center={this.state.mapCenter} zoom={this.state.zoom} locations={this.state.locationsFiltered} selectLocation={this.selectLocation}></MainMap>
       </div>
     );
   }
