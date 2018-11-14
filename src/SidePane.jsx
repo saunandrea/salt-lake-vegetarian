@@ -4,22 +4,20 @@ import * as SearchAPI from './SearchAPI';
 class SidePane extends Component {
     state = {
         searchTerm: '',
-        shortDescription: ''
+        shortDescriptions: {}
     };
 
-    componentDidMount() {
-        let selected = this.props.locations.find(loc => loc.isSelected);
-        if (selected) { this.loadShortDescription(selected.vegId); }
-    }
+    loadShortDescription = (vegId) => {
+        if (this.state.shortDescriptions[vegId]) return;
 
-    componentDidUpdate() {
-        let selected = this.props.locations.find(loc => loc.isSelected);
-        if (selected) { this.loadShortDescription(selected.vegId); }
-    }
-
-    loadShortDescription = (id = 20743) => {
-        SearchAPI.getShortDescription(id).then(shortDescription =>
-            this.setState({ shortDescription }))
+        SearchAPI.getShortDescription(vegId).then(description =>
+            this.setState((currentState) => ({
+                shortDescriptions: {
+                    ...currentState.shortDescriptions,
+                    [vegId]: description,
+                },
+            }))
+        )
     }
 
     handleChange = (event) => {
@@ -37,6 +35,7 @@ class SidePane extends Component {
 
     handleClick = (loc) => {
         this.props.selectLocation(loc);
+        this.loadShortDescription(loc.vegId);
     }
 
     render() {
@@ -49,7 +48,7 @@ class SidePane extends Component {
                         this.props.locations.map((loc, i) => (
                             <div key={i}>
                                 <li><button onClick={() => this.handleClick(loc)} className={loc.isSelected ? "isSelected" : ""}>{loc.name}</button></li>
-                                {loc.isSelected && this.state.shortDescription}
+                                {loc.isSelected && this.state.shortDescriptions[loc.vegId]}
                                 <p></p>
                             </div>
                         )) : <div>

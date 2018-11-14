@@ -1,11 +1,21 @@
 
 
-
-// Generate a unique token for storing your bookshelf data on the backend server.
 export const googleMapsAPIKey = "AIzaSyC_FpCwCWMQhy9MbxsVtGdTXTUxvpmgC_c";
 const vegGuideRoot = 'https://www.vegguide.org';
 
-//I quiered too much  foursquare blocked me. :(
+
+const headers = {
+    'Accept': 'application/json',
+    "User-Agent": "SaltLakeVegetarianTest"
+}
+
+export const getShortDescription = (id) =>
+    fetch(`${vegGuideRoot}/entry/${id}`, { headers })
+        .then(res => res.json())
+        .then(data => data.short_description)
+
+
+        //I quiered too much  foursquare blocked me. :(
 // const fsClientId = "SQ4LMCKWOTEWZAF4V3KJUJ2NMEIPLWI3YURWQ0YDL3WGFPOW";
 // const fsClientSecret = "KYCJRFDIDN4HYPGKF2VFC1OZNO40SVR4HUJYL1IXNU3HYZZM";
 
@@ -22,44 +32,3 @@ const vegGuideRoot = 'https://www.vegguide.org';
 //         .then(res => res.json())
 //         .then(data => data.response.tips.items[0].text)
 //         .catch(err => console.log(err));
-
-const headers = {
-    'Accept': 'application/json',
-    "User-Agent": "SaltLakeVegetarianTest"
-}
-
-export const getShortDescription = (id) =>
-    fetch(`${vegGuideRoot}/entry/${id}`, { headers })
-        .then(res => res.json())
-        .then(data => data.short_description)
-
-// export const get = (bookId) =>
-//     fetch(`${api}/books/${bookId}`, { headers })
-//         .then(res => res.json())
-//         .then(data => data.book)
-
-// export const getAll = () =>
-//     fetch(`${api}/books`, { headers })
-//         .then(res => res.json())
-//         .then(data => data.books)
-
-// export const update = (book, shelf) =>
-//     fetch(`${api}/books/${book.id}`, {
-//         method: 'PUT',
-//         headers: {
-//             ...headers,
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ shelf })
-//     }).then(res => res.json())
-
-// export const search = (query) =>
-//     fetch(`${api}/search`, {
-//         method: 'POST',
-//         headers: {
-//             ...headers,
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ query })
-//     }).then(res => res.json())
-//         .then(data => data.books)

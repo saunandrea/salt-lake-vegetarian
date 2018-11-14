@@ -22,7 +22,6 @@ class App extends Component {
   };
 
   handleChange_filter = (term) => {
-    console.log("term", term);
     let termUpper = term.trim().toUpperCase();
     let locationsFiltered = (termUpper.length === 0) ? this.state.locationsAll :
       this.state.locationsAll.filter(loc => loc.name.toUpperCase().includes(termUpper));
@@ -30,7 +29,6 @@ class App extends Component {
   };
 
   selectLocation = (selected) => {
-    console.log("trying to select your new selection", selected)
     let updatedList = this.state.locationsFiltered.map(loc => {
       loc.isSelected = (loc.vegId === selected.vegId);
       return loc;
