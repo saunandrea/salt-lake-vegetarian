@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
-import * as SearchAPI from './SearchAPI';
+
 
 class SidePane extends Component {
     state = {
         searchTerm: '',
-        shortDescriptions: {}
     };
-
-    loadShortDescription = (vegId) => {
-        if (this.state.shortDescriptions[vegId]) return;
-
-        SearchAPI.getShortDescription(vegId).then(description =>
-            this.setState((currentState) => ({
-                shortDescriptions: {
-                    ...currentState.shortDescriptions,
-                    [vegId]: description,
-                },
-            }))
-        )
-    }
 
     handleChange = (event) => {
         this.setState({ searchTerm: event.target.value }, () => {
@@ -35,7 +21,6 @@ class SidePane extends Component {
 
     handleClick = (loc) => {
         this.props.selectLocation(loc);
-        this.loadShortDescription(loc.vegId);
     }
 
     render() {
@@ -48,7 +33,7 @@ class SidePane extends Component {
                         {this.props.locations.map((loc, i) =>
                             <li key={i}>
                                 <button onClick={() => this.handleClick(loc)} className={loc.isSelected ? "isSelected" : ""}>{loc.name}</button>
-                                <div>{loc.isSelected && this.state.shortDescriptions[loc.vegId]}</div>
+                                <div>{loc.isSelected && this.props.shortDescriptions[loc.vegId]}</div>
                             </li>)}
                     </ul>
                     :

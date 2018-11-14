@@ -3,6 +3,7 @@ import MainMap from './MainMap'
 import SidePane from './SidePane'
 import './App.css';
 import locations from "./locations"
+import * as SearchAPI from './SearchAPI';
 
 class App extends Component {
   locationsWithSelect = locations.map((obj) => {
@@ -17,9 +18,22 @@ class App extends Component {
     },
     zoom: 13,
     locationsAll: this.locationsWithSelect,
-    locationsFiltered: this.locationsWithSelect
-
+    locationsFiltered: this.locationsWithSelect,
+    shortDescriptions: {}
   };
+
+  loadShortDescription = (vegId) => {
+    if (this.state.shortDescriptions[vegId]) return;
+
+    SearchAPI.getShortDescription(vegId).then(description =>
+      this.setState((currentState) => ({
+        shortDescriptions: {
+          ...currentState.shortDescriptions,
+          [vegId]: description,
+        },
+      }))
+    )
+  }
 
   handleChange_filter = (term) => {
     let termUpper = term.trim().toUpperCase();
@@ -33,6 +47,7 @@ class App extends Component {
       loc.isSelected = (loc.vegId === selected.vegId);
       return loc;
     });
+    this.loadShortDescription(selected.vegId);
     this.setState({
       locationsFiltered: updatedList,
       mapCenter: {
@@ -45,7 +60,7 @@ class App extends Component {
   render() {
     return (
       <div className="mainFrame">
-        <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter} selectLocation={this.selectLocation}></SidePane>
+        <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter} selectLocation={this.selectLocation} shortDescriptions={this.state.shortDescriptions}></SidePane>
         <MainMap center={this.state.mapCenter} zoom={this.state.zoom} locations={this.state.locationsFiltered} selectLocation={this.selectLocation}></MainMap>
       </div>
     );
