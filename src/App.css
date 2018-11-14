@@ -22,8 +22,10 @@ html, body {
 
 .sidePane {
   background-color: #3c3d41;
-  padding: 30px 20px;
+  padding: 0px 20px;
   color: rgba(255, 255, 255, 1.00);
+  box-shadow: 5px 0 5px -5px #333;
+  z-index: 10;
 }
 
 .options {
@@ -46,7 +48,21 @@ html, body {
   border: none;
 }
 
-.options li button:hover {
-  color: rgba(255, 255, 255, 0.80);
+.options li button:hover, .options li button:focus {
+  color: rgb(243, 253, 127);
   text-decoration: none;
+}
+
+h1 {
+  color: rgb(243, 253, 127);
+}
+
+input {
+  display: block;
+  margin: 1em auto;
+  padding: 0.5em 0.25em;
+  border: none;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+  box-shadow: 0 0 1em 0.25em rgba(0, 0, 0, 0.2);
 }

@@ -6,14 +6,20 @@ import locations from "./locations"
 import * as SearchAPI from './SearchAPI'
 
 class App extends Component {
+  locationsWithSelect = locations.map((obj) => {
+    obj.isSelected = false;
+    return obj;
+  })
+
   state = {
     mapCenter: {
       lat: 40.7589138,
       lng: -111.8989378
     },
     zoom: 13,
-    locationsAll: locations,
-    locationsFiltered: locations
+    locationsAll: this.locationsWithSelect,
+    locationsFiltered: this.locationsWithSelect
+
   };
 
   handleChange_filter = (term) => {
@@ -23,12 +29,21 @@ class App extends Component {
     this.setState({ locationsFiltered })
   };
 
+  selectLocation = (selected) => {
+    console.log("trying to select your new selection", selected)
+    let updatedList = this.state.locationsFiltered.map(loc => {
+      loc.isSelected = (loc.vegId === selected.vegId);
+      return loc;
+    });
+    this.setState({ locationsFiltered: updatedList })
+  }
+
   render() {
 
-    console.log("tips", SearchAPI.getTips((this.state.locationsAll[0].fsId)));
+    // console.log("tips", SearchAPI.getTips((this.state.locationsAll[0].fsId)));
     return (
       <div className="mainFrame">
-        <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter}></SidePane>
+        <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter} selectLocation={this.selectLocation}></SidePane>
         <MainMap center={this.state.mapCenter} zoom={this.state.zoom} locations={this.state.locationsFiltered}></MainMap>
       </div>
     );

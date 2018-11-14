@@ -5,7 +5,8 @@
             "lat": 40.763803,
             "lng": -111.889457
         },
-        "fsId": "59b74cfeee71203bd8a96939"
+        "fsId": "59b74cfeee71203bd8a96939",
+        "vegId": "22038"
     },
     {
         "name": "All Chay",
@@ -13,7 +14,8 @@
             "lat": 40.7804459,
             "lng": -111.9297522
         },
-        "fsId": "550dc9e6498e6f26c61aadd6"
+        "fsId": "550dc9e6498e6f26c61aadd6",
+        "vegId": "20743"
     },
     {
         "name": "Season's Plant Based Bistro",
@@ -21,7 +23,8 @@
             "lat": 40.740059,
             "lng": -111.890814
         },
-        "fsId": "597b04a70d8a0f47dd93e619"
+        "fsId": "597b04a70d8a0f47dd93e619",
+        "vegId": "22037"
     },
     {
         "name": "Vertical Diner",
@@ -29,7 +32,8 @@
             "lat": 40.7499919,
             "lng": -111.9000643
         },
-        "fsId": "530e9183498e4a227109881c"
+        "fsId": "530e9183498e4a227109881c",
+        "vegId": "3542"
     },
     {
         "name": "Zest",
@@ -37,7 +41,8 @@
             "lat": 40.763272,
             "lng": -111.89864
         },
-        "fsId": "5063bc89e4b0f8bfa6c9d79d"
+        "fsId": "5063bc89e4b0f8bfa6c9d79d",
+        "vegId": "18439"
     },
     {
         "name": "Buds",
@@ -45,6 +50,7 @@
             "lat": 40.763008,
             "lng": -111.8785537
         },
-        "fsId": "50746e7fe4b0cfa634834f26"
+        "fsId": "50746e7fe4b0cfa634834f26",
+        "vegId": "17671"
     }
 ]
