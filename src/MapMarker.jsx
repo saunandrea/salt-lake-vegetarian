@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as SearchAPI from './SearchAPI'
 import cabbageImg from './cabbageMedium.png'
+import cabbagePurpleImg from './cabbagePurple.png'
 
 class MapMarker extends Component {
 
@@ -12,7 +13,7 @@ class MapMarker extends Component {
 
         return (
             <div>
-                <img src={cabbageImg} alt={"Marker for Location of " + loc.name} height="50px" />
+                <img src={loc.isSelected ? cabbagePurpleImg : cabbageImg} alt={"Marker for Location of " + loc.name} height="50px" />
             </div>
         );
     }

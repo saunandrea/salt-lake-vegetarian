@@ -12,11 +12,6 @@ class SidePane extends Component {
         if (selected) { this.loadShortDescription(selected.vegId); }
     }
 
-    componentWillReceiveProps(nextProps) {
-        let selected = nextProps.locations.find(loc => loc.isSelected);
-        if (selected) { this.loadShortDescription(selected.vegId); }
-    }
-
     componentDidUpdate() {
         let selected = this.props.locations.find(loc => loc.isSelected);
         if (selected) { this.loadShortDescription(selected.vegId); }
@@ -53,7 +48,7 @@ class SidePane extends Component {
                     {this.props.locations ?
                         this.props.locations.map((loc, i) => (
                             <div key={i}>
-                                <li><button onClick={() => this.handleClick(loc)}>{loc.name}</button></li>
+                                <li><button onClick={() => this.handleClick(loc)} className={loc.isSelected ? "isSelected" : ""}>{loc.name}</button></li>
                                 {loc.isSelected && this.state.shortDescription}
                                 <p></p>
                             </div>

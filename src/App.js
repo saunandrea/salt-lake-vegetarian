@@ -3,7 +3,6 @@ import MainMap from './MainMap'
 import SidePane from './SidePane'
 import './App.css';
 import locations from "./locations"
-import * as SearchAPI from './SearchAPI'
 
 class App extends Component {
   locationsWithSelect = locations.map((obj) => {
@@ -25,7 +24,8 @@ class App extends Component {
   handleChange_filter = (term) => {
     console.log("term", term);
     let termUpper = term.trim().toUpperCase();
-    let locationsFiltered = (termUpper.length === 0) ? this.state.locationsAll : this.state.locationsAll.filter(loc => loc.name.toUpperCase().includes(termUpper));
+    let locationsFiltered = (termUpper.length === 0) ? this.state.locationsAll :
+      this.state.locationsAll.filter(loc => loc.name.toUpperCase().includes(termUpper));
     this.setState({ locationsFiltered })
   };
 
@@ -35,12 +35,16 @@ class App extends Component {
       loc.isSelected = (loc.vegId === selected.vegId);
       return loc;
     });
-    this.setState({ locationsFiltered: updatedList })
+    this.setState({
+      locationsFiltered: updatedList,
+      mapCenter: {
+        lat: selected.lat,
+        lng: selected.lng
+      }
+    })
   }
 
   render() {
-
-    // console.log("tips", SearchAPI.getTips((this.state.locationsAll[0].fsId)));
     return (
       <div className="mainFrame">
         <SidePane locations={this.state.locationsFiltered} onUpdate={this.handleChange_filter} selectLocation={this.selectLocation}></SidePane>

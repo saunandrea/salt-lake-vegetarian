@@ -15,9 +15,34 @@ html, body {
   grid-auto-flow: column;
 }
 
-.infoBubble {
-  display: grid;
-  background-color: red;
+input {
+  display: block;
+  margin: 1em auto;
+  padding: 0.5em 0.25em;
+  border: none;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+  box-shadow: 0 0 1em 0.25em rgba(0, 0, 0, 0.2);
+}
+
+@media all and (max-width: 600px) {
+  .mainFrame {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    grid-auto-flow: row;
+  }
+  input {
+    font-size: 1em;
+  }
+  ul {
+    columns: 2 100px;
+  }
+  h1 {
+    text-align: center;
+    margin: 5px;
+    font-size: 1.2em;
+  }
 }
 
 .sidePane {
@@ -48,7 +73,7 @@ html, body {
   border: none;
 }
 
-.options li button:hover, .options li button:focus {
+.options li button:hover, .options li button:focus, .options li button.isSelected {
   color: rgb(243, 253, 127);
   text-decoration: none;
 }
@@ -57,12 +82,6 @@ h1 {
   color: rgb(243, 253, 127);
 }
 
-input {
-  display: block;
-  margin: 1em auto;
-  padding: 0.5em 0.25em;
-  border: none;
-  border-radius: 0.2em;
-  font-size: 1.5em;
-  box-shadow: 0 0 1em 0.25em rgba(0, 0, 0, 0.2);
+.selectedMarker {
+  filter: hue-rotate(90deg);
 }
