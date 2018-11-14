@@ -25,6 +25,11 @@ input {
   box-shadow: 0 0 1em 0.25em rgba(0, 0, 0, 0.2);
 }
 
+.mapContainer {
+  height: 100vh;
+  width: 100%;
+}
+
 @media all and (max-width: 600px) {
   .mainFrame {
     display: grid;
@@ -42,6 +47,10 @@ input {
     text-align: center;
     margin: 5px;
     font-size: 1.2em;
+  }
+  .mapContainer {
+    height: 300px;
+    width: 100%;
   }
 }
 

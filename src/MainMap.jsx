@@ -23,7 +23,7 @@ class MainMap extends Component {
     render() {
         let key = SearchAPI.googleMapsAPIKey;
         return (
-            <div style={{ height: '100vh', width: '100%' }}>
+            <div className="mapContainer">
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: key }}
                     center={this.props.center}

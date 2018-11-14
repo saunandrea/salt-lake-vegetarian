@@ -40,22 +40,23 @@ class SidePane extends Component {
 
     render() {
         return (
-            <div className="sidePane">
+            <nav role="navigation" className="sidePane">
                 <h1>Veggies in SLC</h1>
-                <input type="text" placeholder="Filter Options" value={this.state.searchTerm} onChange={this.handleChange}></input>
-                <ul className="options">
-                    {this.props.locations ?
-                        this.props.locations.map((loc, i) => (
-                            <div key={i}>
-                                <li><button onClick={() => this.handleClick(loc)} className={loc.isSelected ? "isSelected" : ""}>{loc.name}</button></li>
-                                {loc.isSelected && this.state.shortDescriptions[loc.vegId]}
-                                <p></p>
-                            </div>
-                        )) : <div>
-                            loading...
-                    </div>}
-                </ul>
-            </div>
+                <input aria-label="Filter Options" type="text" placeholder="Filter Options" value={this.state.searchTerm} onChange={this.handleChange}></input>
+                {this.props.locations ?
+                    <ul className="options">
+                        {this.props.locations.map((loc, i) =>
+                            <li key={i}>
+                                <button onClick={() => this.handleClick(loc)} className={loc.isSelected ? "isSelected" : ""}>{loc.name}</button>
+                                <div>{loc.isSelected && this.state.shortDescriptions[loc.vegId]}</div>
+                            </li>)}
+                    </ul>
+                    :
+                    <div>
+                        loading...
+                    </div>
+                }
+            </nav>
         );
     }
 }
